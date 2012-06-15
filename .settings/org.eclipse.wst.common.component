@@ -1,17 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-modules id="moduleCoreId" project-version="1.5.0">
-<<<<<<< HEAD
     <wb-module deploy-name="Agenda">
         <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
         <property name="context-root" value="Agenda"/>
         <property name="java-output-path" value="/Agenda/build/classes"/>
-=======
-    <wb-module deploy-name="TwitterUnibrasil">
-        <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
-        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
-        <property name="context-root" value="TwitterUnibrasil"/>
-        <property name="java-output-path" value="/TwitterUnibrasil/build/classes"/>
->>>>>>> 9120437a36b5d52f8b016a701d5a6cfb2927d995
     </wb-module>
 </project-modules>

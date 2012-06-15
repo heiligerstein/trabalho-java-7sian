@@ -80,16 +80,19 @@
 							<a href="Usuario?op=remove&id=<%= usuario.getId() %>"><img class="help" alt="delete" src="<%= path %>images/icon_delete.png" original-title="Deletar"></a>
 							 -->
 							<a href="Usuario?op=seguir&id_following=<%= usuario.getId() %>"><img class="help" alt="seguir" src="<%= path %>images/user_go.png" original-title="Seguir"></a>
+							<a href="Usuario?op=ser_seguido&id_follower=<%= usuario.getId() %>"><img class="help" alt="seguir" src="<%= path %>images/user_go.png" original-title="Ser Seguido"></a>
 							<%
-								for(UsuarioModel eu_sigo : usuario.getaQuemEuSigo()) {
+								//for(UsuarioModel eu_sigo : usuario.getaQuemEuSigo()) {
 									// out.println("Eu: " + (Integer) session.getAttribute("id"));
 									// out.println("Sigo: " + eu_sigo.getId());
-									if(eu_sigo.getId() == usuario.getId()) {
+								//	if(eu_sigo.getId() == usuario.getId()) {
 							%>
-										<a href="Usuario?op=nao_seguir&id_following=<%= usuario.getId() %>"><img class="help" alt="seguir" src="<%= path %>images/icon_add_follower.png" original-title="Deixar de seguir"></a>
+									<!-- 
+									<a href="Usuario?op=nao_seguir&id_following=<%= usuario.getId() %>"><img class="help" alt="seguir" src="<%= path %>images/icon_add_follower.png" original-title="Deixar de seguir"></a>
+									 -->	
 							<%
-									}
-								}
+									//}
+								//}
 							%>
 						</td>
 					</tr>
@@ -98,19 +101,6 @@
 		</table>
 		<div class="chart_wrapper" id="chart_wrapper"></div>
 		<!-- End bar chart table-->
-
-		<!-- Begin pagination
-			<div class="pagination">
-				<a href="#">«</a>
-				<a class="active" href="#">1</a>
-				<a href="#">2</a>
-				<a href="#">3</a>
-				<a href="#">4</a>
-				<a href="#">5</a>
-				<a href="#">6</a>
-				<a href="#">»</a>
-			</div>
-		End pagination -->
 
 	</div>
 </div>

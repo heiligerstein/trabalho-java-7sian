@@ -163,6 +163,17 @@ public class UsuarioModel {
 			throw new Exception("Você não pode seguir a você mesmo. Seria uma contradição!");
 	}
 	
+	public void setSerSeguido(UsuarioModel usuario) throws Throwable {
+		if(meusSeguidores == null) 
+			meusSeguidores = new HashSet<UsuarioModel>();
+
+		// adiciona somente se não for ele mesmo
+		if(this.getId() != usuario.getId())
+			meusSeguidores.add(usuario);
+		else
+			throw new Exception("Você não pode ser seguido por você mesmo. Seria uma contradição!");
+	}
+	
 	public void unsetSeguir(UsuarioModel usuario) throws Throwable {
 
 		if(aQuemEuSigo == null) 

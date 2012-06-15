@@ -57,12 +57,15 @@ public class UsuarioController extends Controller {
 				if (request.getParameter("op").equals("list")) { // list
 					list();
 				}
-				if (request.getParameter("op").equals("seguir")) { // seguir alguem
+				if (request.getParameter("op").equals("seguir")) { // eu seguir alguem
 					seguir();
 				}
-				if (request.getParameter("op").equals("nao_seguir")) { // deixar de seguir alguem
-					naoSeguir();
+				if (request.getParameter("op").equals("ser_seguido")) { // adiciona um usuário para me seguir
+					serSeguido();
 				}
+				if (request.getParameter("op").equals("nao_seguir")) { // eu deixar de seguir alguem
+					naoSeguir();
+				}		
 				if (request.getParameter("op").equals("nao_me_seguir")) { // deixar de seguir alguem
 					naoMeSeguir();
 				}
@@ -138,7 +141,22 @@ public class UsuarioController extends Controller {
 		return false;
 	}
 	
-	private boolean serSeguido() {
+	private boolean serSeguido() throws Throwable {
+
+		HttpSession session = request.getSession(true);
+
+		UsuarioModel usuarioQueMeSegue = new DaoFactory().getUsuarioDao().procura(Integer.parseInt(request.getParameter("id_follower")));
+		UsuarioModel usuarioLogado = new DaoFactory().getUsuarioDao().procura((Integer) session.getAttribute("id"));
+		
+		try {
+			// adiciona usuario a seguir			
+			usuarioLogado.setSerSeguido(usuarioQueMeSegue);
+			new DaoFactory().getUsuarioDao().atualiza(usuarioLogado);
+			setSuccessMessage("Agora você será seguindo por " + usuarioQueMeSegue.getNome() + ".", "Usuario?op=list");
+		} catch (Exception e) {
+			setSessionError(e.getMessage(), "Usuario?op=list");
+		}
+		
 		return false;
 	}
 

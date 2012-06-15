@@ -38,7 +38,7 @@ public class HibernateSessionFactory {
 			if (session == null || !session.isOpen()) {
 				if (sessionFactory == null) {
 				    	try {
-				    		String url = "jdbc:mysql://"+ host +":"+porta+"/"+bd+ "?autoReconnect=true";
+				    		String url = "jdbc:mysql://"+ host +":"+porta+"/"+bd+ "?autoReconnect=false";
 				    		AnnotationConfiguration cfg  = new AnnotationConfiguration();
 
 				    		// cfg.addAnnotatedClass(Cliente.class);
@@ -53,7 +53,11 @@ public class HibernateSessionFactory {
 				            .setProperty("hibernate.format_sql", "true")
 				    		.setProperty("hibernate.generate_statistics", "true")
 				            .setProperty("hibernate.use_sql_comments", "true")
-				    		.setProperty("hibernate.hbm2ddl.auto", "update");
+				    		.setProperty("hibernate.hbm2ddl.auto", "update")
+				    		.setProperty("hibernate.cache.use_second_level_cache", "false")
+				    		.setProperty("hibernate.cache.use_query_cache", "false")
+				    		.setProperty("connection.pool_size", "1")
+				    		.setProperty("cache.provider_class", "org.hibernate.cache.NoCacheProvider");
 
 				    		sessionFactory = cfg.buildSessionFactory();
 
